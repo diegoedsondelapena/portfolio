@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -16,7 +16,7 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a href="#top" class="brand" aria-label="Diego de la Peña">Diego de la Pe<span class="tilde-n">n<span class="tilde-accent" aria-hidden="true">~</span></span>a</a>
+    <a href="#top" class="brand" aria-label="Diego de la Peña">Diego de la Pe<span class="tilde-n">n<span class="tilde-accent" aria-hidden="true">~</span></span>a<span class="brand-dot">.</span></a>
     <nav class="main-nav" id="main-nav">
       <a href="#trabajo">Trabajo</a>
       <a href="#sobre-mi">Sobre mí</a>
@@ -35,8 +35,8 @@
   <section class="hero">
     <div class="wrap hero-inner">
       <p class="eyebrow">Sound Design &amp; Composición</p>
-      <h1 class="hero-name" aria-label="Diego de la Peña">Diego de la Pe<span class="tilde-n">n<span class="tilde-accent" aria-hidden="true">~</span></span>a</h1>
-      <p class="hero-tagline">Le pongo sonido a las ideas que necesitan pegar fuerte.</p>
+      <h1 class="hero-name" aria-label="Diego de la Peña">Diego de la Pe<span class="tilde-n">n<span class="tilde-accent" aria-hidden="true">~</span></span>a<span class="brand-dot">.</span></h1>
+      <p class="hero-tagline">Le pongo sonido a tus ideas para que resuenen más fuerte.</p>
       <p class="hero-lead">
         Más de 20 años como músico y más de 6 trabajando en la industria publicitaria.
         Composición y grabación de música para múltiples campañas entre ellas para Burger King,
@@ -45,7 +45,7 @@
       </p>
       <div class="hero-actions">
         <a href="#trabajo" class="btn btn-primary">Ver trabajo</a>
-        <a href="mailto:diegopocho25@gmail.com" class="btn btn-ghost">Escribime</a>
+        <button type="button" class="btn btn-ghost" data-open-contact>Escribime</button>
       </div>
       <div class="hero-meta">
         <span>Pro Tools · Reaper · Logic</span>
@@ -67,8 +67,8 @@
   <!-- TRABAJO -->
   <section class="work" id="trabajo">
     <div class="wrap">
-      <p class="section-label">Trabajo seleccionado</p>
-      <h2>Algunos proyectos de referencia</h2>
+      <p class="section-label">Trabajos seleccionados</p>
+      <h2>Portfolio</h2>
 
       <div class="work-grid">
 
@@ -100,7 +100,7 @@
           <div class="work-card-body">
             <p class="work-client">Smart Life · Argentina</p>
             <p class="work-studio">Happy Together Música</p>
-            <h3>Campaña Smart Life</h3>
+            <h3>"Enciende Emociones"</h3>
             <p>Composición, grabación y voz para la pieza publicitaria de la marca.</p>
             <ul class="work-tags">
               <li>Composición</li>
@@ -239,8 +239,9 @@
           <span class="fact-label">años full-time en publicidad</span>
         </div>
         <div class="fact">
+          <span class="fact-label">Clientes en</span>
           <span class="fact-number">9</span>
-          <span class="fact-label">países con clientes</span>
+          <span class="fact-label">países</span>
         </div>
         <div class="fact fact-tools">
           <span class="fact-label">Herramientas</span>
@@ -284,7 +285,7 @@
       <p class="section-label">Contacto</p>
       <h2>¿Tenés un proyecto en mente?</h2>
       <p class="contact-lead">Contame de qué se trata y en qué te puedo ayudar.</p>
-      <a href="mailto:diegopocho25@gmail.com" class="btn btn-primary btn-large">diegopocho25@gmail.com</a>
+      <button type="button" class="btn btn-primary btn-large" data-open-contact>diego.edson.delapena@gmail.com</button>
     </div>
   </section>
 
@@ -292,10 +293,37 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <span>© <span id="year"></span> Diego — Sound Design &amp; Composición</span>
+    <span>© <span id="year"></span> Diego de la Peña — Sound Design &amp; Composición</span>
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<!-- MODAL DE CONTACTO -->
+<div class="modal-overlay" id="contact-modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+    <button type="button" class="modal-close" id="contact-modal-close" aria-label="Cerrar">&times;</button>
+    <h3 id="contact-modal-title">Contame tu proyecto</h3>
+    <form id="contact-form">
+      <label for="cf-email">Mail</label>
+      <input type="email" id="cf-email" name="email" required>
+
+      <label for="cf-name">Nombre</label>
+      <input type="text" id="cf-name" name="name" required>
+
+      <label for="cf-phone">Teléfono (opcional)</label>
+      <input type="tel" id="cf-phone" name="phone">
+
+      <label for="cf-project">Proyecto</label>
+      <input type="text" id="cf-project" name="project" required>
+
+      <label for="cf-message">Contame qué tenés en mente</label>
+      <textarea id="cf-message" name="message" rows="5" required></textarea>
+
+      <button type="submit" class="btn btn-primary" id="contact-form-submit">Enviar</button>
+      <p class="modal-status" id="contact-form-status" role="status"></p>
+    </form>
+  </div>
+</div>
+
+<script src="js/script.js?v=3"></script>
 </body>
 </html>
