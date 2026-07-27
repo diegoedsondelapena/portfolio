@@ -80,12 +80,30 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 
 .brand {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
+  white-space: nowrap;
 }
 
 .brand-dot { color: var(--accent); }
+
+/* Recolorea la virgulilla de la ñ en "Peña" en naranja, como el punto de la marca.
+   La base es una "n" simple + una "~" decorativa posicionada encima, en vez del
+   glifo "ñ" completo, para poder pintar solo el acento. */
+.tilde-n {
+  position: relative;
+  display: inline-block;
+}
+.tilde-accent {
+  position: absolute;
+  left: 42%;
+  top: -0.52em;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-size: 0.85em;
+  line-height: 1;
+}
 
 .main-nav {
   display: flex;
@@ -180,9 +198,18 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   margin-bottom: 18px;
 }
 
-.hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  max-width: 15ch;
+.hero-name {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  max-width: 18ch;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--text-dim);
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  max-width: 32ch;
+  margin-top: 10px;
 }
 
 .hero-lead {
