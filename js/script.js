@@ -18,7 +18,7 @@ nav.querySelectorAll("a").forEach((link) => {
 // ---------- Modal de contacto ----------
 // Completar con la URL que da Formspree (ej: "https://formspree.io/f/xxxxxxx")
 // una vez creada la cuenta. Mientras esté vacío, el form cae de vuelta a un mailto.
-const FORMSPREE_ENDPOINT = "";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqernkzl";
 const CONTACT_EMAIL = "diego.edson.delapena@gmail.com";
 
 const modal = document.getElementById("contact-modal");
