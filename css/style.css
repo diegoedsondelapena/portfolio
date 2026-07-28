@@ -86,14 +86,16 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   white-space: nowrap;
 }
 
-.brand-dot { color: var(--accent); }
+.brand-dot { color: var(--accent-2); }
 
-/* Branding: anteúltima letra de cada palabra en los títulos (ver script.js). */
-.accent-letter { color: var(--accent); }
+/* Branding: anteúltima letra de cada palabra en los títulos (ver script.js).
+   Naranja suave (accent-2, como "SOUND DESIGN & COMPOSICIÓN"), no el accent fuerte
+   de los botones. */
+.accent-letter { color: var(--accent-2); }
 
-/* La ñ de "Peña" entera en naranja, como el punto de la marca. */
+/* La ñ de "Peña" entera en naranja suave, como el punto de la marca. */
 .tilde-n {
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 .main-nav {
