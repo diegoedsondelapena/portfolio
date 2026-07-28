@@ -88,21 +88,12 @@ p { margin: 0 0 1em; color: var(--text-dim); }
 
 .brand-dot { color: var(--accent); }
 
-/* Recolorea la virgulilla de la ñ en "Peña" en naranja, como el punto de la marca.
-   Usa la "ñ" real de la tipografía (proporciones y posición correctas garantizadas
-   por la fuente) y superpone una copia idéntica en naranja, recortada para que solo
-   se vea la franja de arriba (la virgulilla) — así queda pegada y proporcionada,
-   nunca separada, sea cual sea el tamaño de letra. */
+/* Branding: anteúltima letra de cada palabra en los títulos (ver script.js). */
+.accent-letter { color: var(--accent); }
+
+/* La ñ de "Peña" entera en naranja, como el punto de la marca. */
 .tilde-n {
-  position: relative;
-  display: inline-block;
-}
-.tilde-mask {
-  position: absolute;
-  inset: 0;
   color: var(--accent);
-  clip-path: inset(0 0 80% 0);
-  pointer-events: none;
 }
 
 .main-nav {

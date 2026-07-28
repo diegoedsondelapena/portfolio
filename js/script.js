@@ -1,5 +1,36 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// ---------- Branding: anteúltima letra de cada palabra en naranja ----------
+// Se aplica a todos los títulos blancos (h2/h3) del sitio, menos el nombre
+// "Diego de la Peña." (nav + hero + footer), que ya tiene su propio tratamiento.
+(function accentPenultimateLetters() {
+  const WORD_RE = /[A-Za-zÀ-ÖØ-öø-ÿ]+/g;
+
+  document.querySelectorAll("h2, h3").forEach((el) => {
+    if (el.closest(".hero-name, .brand")) return;
+
+    const text = el.textContent;
+    let html = "";
+    let lastIndex = 0;
+    let match;
+
+    while ((match = WORD_RE.exec(text)) !== null) {
+      html += text.slice(lastIndex, match.index);
+      const word = match[0];
+      if (word.length >= 2) {
+        const i = word.length - 2;
+        html += word.slice(0, i) + '<span class="accent-letter">' + word[i] + "</span>" + word.slice(i + 1);
+      } else {
+        html += word;
+      }
+      lastIndex = match.index + word.length;
+    }
+    html += text.slice(lastIndex);
+
+    el.innerHTML = html;
+  });
+})();
+
 const toggle = document.getElementById("nav-toggle");
 const nav = document.getElementById("main-nav");
 
