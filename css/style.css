@@ -240,7 +240,8 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   border: 1px solid var(--line);
   overflow: hidden;
 }
-.reel-frame video { width: 100%; height: 100%; object-fit: cover; }
+.reel-frame .video-player { width: 100%; height: 100%; }
+.reel-frame .video-player video { width: 100%; height: 100%; object-fit: cover; }
 
 .reel-placeholder {
   height: 100%;
@@ -309,7 +310,8 @@ section { padding: 88px 0; }
   align-items: center;
   justify-content: center;
 }
-.work-card-video video { width: 100%; height: 100%; object-fit: cover; }
+.work-card-video .video-player { width: 100%; height: 100%; }
+.work-card-video .video-player video { width: 100%; height: 100%; object-fit: cover; }
 .media-placeholder {
   font-size: 0.8rem;
   color: var(--text-faint);
@@ -557,4 +559,56 @@ section { padding: 88px 0; }
 
 @media (max-width: 480px) {
   .modal-card { padding: 28px 20px 24px; }
+}
+
+/* ---------- Reproductor de video propio (solo play/pausa + volumen) ---------- */
+.video-player {
+  position: relative;
+  background: #000;
+}
+.video-player video {
+  display: block;
+  cursor: pointer;
+}
+.video-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.15));
+}
+
+.vp-play {
+  flex: 0 0 auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s var(--ease);
+}
+.vp-play:hover { background: var(--accent); color: var(--accent-contrast); }
+
+.vp-time {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.vp-volume {
+  flex: 0 1 80px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin-left: auto;
 }

@@ -132,3 +132,66 @@ contactForm.addEventListener("submit", async (e) => {
     submitBtn.disabled = false;
   }
 });
+
+// ---------- Reproductores de video: solo play/pausa + volumen ----------
+// Controles nativos deshabilitados (sin descarga, pantalla completa, velocidad, etc.)
+// vía el atributo controls quitado del <video>. Además, al reproducir uno se pausan
+// todos los demás, para que no suene más de un video a la vez.
+(function setupVideoPlayers() {
+  function formatTime(seconds) {
+    if (!isFinite(seconds)) return "0:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60)
+      .toString()
+      .padStart(2, "0");
+    return `${m}:${s}`;
+  }
+
+  let currentlyPlaying = null;
+
+  document.querySelectorAll(".video-player").forEach((wrapper) => {
+    const video = wrapper.querySelector("video");
+    const playBtn = wrapper.querySelector(".vp-play");
+    const timeLabel = wrapper.querySelector(".vp-time");
+    const volumeSlider = wrapper.querySelector(".vp-volume");
+
+    playBtn.addEventListener("click", () => {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+
+    video.addEventListener("click", () => {
+      playBtn.click();
+    });
+
+    video.addEventListener("play", () => {
+      playBtn.innerHTML = "&#10074;&#10074;";
+      playBtn.setAttribute("aria-label", "Pausar");
+      if (currentlyPlaying && currentlyPlaying !== video) {
+        currentlyPlaying.pause();
+      }
+      currentlyPlaying = video;
+    });
+
+    video.addEventListener("pause", () => {
+      playBtn.innerHTML = "&#9654;";
+      playBtn.setAttribute("aria-label", "Reproducir");
+    });
+
+    video.addEventListener("loadedmetadata", () => {
+      timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+    });
+    video.addEventListener("timeupdate", () => {
+      timeLabel.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+    });
+
+    volumeSlider.addEventListener("input", () => {
+      const vol = Number(volumeSlider.value);
+      video.volume = vol;
+      video.muted = vol === 0;
+    });
+  });
+})();
